@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "b2eb7438-dc14-4b66-b07f-ff0aeda0770e",
+		"name": "Url Shortener",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2528321"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"im3an@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"im3an@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "redirect",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/u/{code}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"u",
+						"{code}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Link",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "gwLA0bOdyE0eOZSEMPUC5VPQ5kHRl4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"url\": \"https://hacc.ir/%d8%af%db%8c%da%af%d8%b1-%d8%af%d8%b3%d8%aa%d9%87-%da%86%da%a9-%da%a9%d8%a7%d8%ba%d8%b0%db%8c-%d8%a8%d9%87-%d9%85%d8%b4%d8%aa%d8%b1%db%8c-%d9%88%d8%a7%da%af%d8%b0%d8%a7%d8%b1-%d9%86%d9%85%db%8c/\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/create-link",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"create-link"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Of Links",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "uItHOopnHUpgwoEV4VMFjXgpRib13K",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/list-links",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"list-links"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Links",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "uItHOopnHUpgwoEV4VMFjXgpRib13K",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 14,\n    \"url\": \"http://uuu.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/update-link",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"update-link"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Link",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "uItHOopnHUpgwoEV4VMFjXgpRib13K",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/delete-link?id=12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"delete-link"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "12"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,20 @@
+{
+    "name": "imanborumand/urlshortener",
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/"
+        },
+        "files": [
+            "src/helpers/custom_helpers.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Iman Borumand Zadeh"
+        }
+    ],
+    "require": {
+        "php" : "^8.0",
+      "ext-mysqli": "*"
+    }
+}

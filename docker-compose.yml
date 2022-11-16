@@ -1,0 +1,76 @@
+version: '2'
+services:
+
+  #PHP Service
+  url-shortener-app:
+    build:
+      context: .
+      dockerfile: app.dockerfile
+    container_name: url-shortener-app
+    tty: true
+    environment:
+      SERVICE_NAME: url-shortener-app
+      SERVICE_TAGS: dev
+    working_dir: /var/www/server
+    volumes:
+      - ./app:/var/www/server
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - url-shortener-network
+    external_links:
+      - rabbitmq:rabbitmq
+    depends_on:
+      - url-shortener-mysql
+    command: /bin/bash -c "php-fpm"
+
+
+  #Nginx Service
+  url-shortener-webserver:
+    build:
+      context: ./
+      dockerfile: webserver.dockerfile
+    container_name: url-shortener-webserver
+    tty: true
+    ports:
+      - "8082:80"
+    volumes:
+      - ./app:/var/www/server
+    depends_on:
+      - url-shortener-app
+    networks:
+      - url-shortener-network
+
+
+  #MySQL Service
+  url-shortener-mysql:
+    image: mysql:8.0
+    container_name: url-shortener-mysql
+    restart: always
+    tty: true
+    ports:
+      - "33030:3306"
+    environment:
+      MYSQL_DATABASE: shortener
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_PASSWORD: secret
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+#    volumes:
+#      - dbdata:/var/lib/mysql/
+#      - ./mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - url-shortener-network
+
+
+networks:
+  url-shortener-network:
+    driver: bridge
+
+
+
+
+
+
+
+
+                        
