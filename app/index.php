@@ -9,7 +9,9 @@ require __DIR__ . '/src/config/lang.php';
 
 ini_set('display_errors', DISPLAY_DEBUG);
 header("Content-Type:application/json");
-
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: *');
+header("Access-Control-Allow-Headers: X-Requested-With");
 
 
 define( "DEFAULT_LANGUAGE" , $lang[$config['lang']] ); //set default language
