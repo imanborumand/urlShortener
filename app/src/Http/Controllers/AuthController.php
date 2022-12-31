@@ -60,6 +60,23 @@ class AuthController extends BaseController
 	
 	
 	/**
+	 * @return string
+	 */
+	public function logout() : string
+	{
+		$user = (new LinkController())->getUserByToken();
+		if (
+			$this->db->table(USER_TABLE)
+				->where('id', $user['id'])
+			->update(['token' => null])
+			->commit()
+		) {
+			return ApiResponse::apiResponse([], 'logout_ok');
+		}
+		return ApiResponse::apiResponse([], 'server_error', 500);
+	}
+	
+	/**
 	 * check user
 	 * @return bool
 	 */

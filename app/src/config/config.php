@@ -51,6 +51,10 @@ $config = [
 		'update-link' => [
 			'path' => 'update-link',
 			'method' => 'PUT',
+		],
+		'logout' => [
+			'path' => 'logout',
+			'method' => 'GET',
 		]
 	]
 ];

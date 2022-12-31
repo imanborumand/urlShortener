@@ -160,7 +160,7 @@ class LinkController extends BaseController
 	/**
 	 * @return array
 	 */
-	private function getUserByToken() : array
+	public function getUserByToken() : array
 	{
 		return $this->db->table( USER_TABLE )
 						->select()

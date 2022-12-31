@@ -51,6 +51,9 @@ return  match($url) {
 	
 	'/login' =>  $controllerGenerator->runMethodOfControllers(new AuthController(), 'login'),
 	'/register' =>  $controllerGenerator->runMethodOfControllers(new AuthController(), 'register'),
+	
+	'/logout' =>  $controllerGenerator->middleware( new AuthMiddleware())
+									  ->runMethodOfControllers(new AuthController(), 'logout'),
 
 	
 	default =>  $controllerGenerator->runMethodOfControllers(new HomeController(), 'home'),

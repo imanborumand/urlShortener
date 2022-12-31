@@ -15,6 +15,7 @@ $lang = [
 		'reg_ok' => 'You have successfully registered! Please login!',
 		'link_update' => 'Your Link Updated!',
 		'link_not_valid' => 'Link Not Valid',
+		'logout_ok' => 'You are out!',
 	],
 	'fa' => [
 	
