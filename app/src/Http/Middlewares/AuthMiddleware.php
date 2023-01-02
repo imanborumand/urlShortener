@@ -13,6 +13,8 @@ class AuthMiddleware extends BaseMiddleware
 	public static function check() : bool
 	{
 		$token = self::getTokenFromHeader();
+		
+		
 		if (!$token) {
 			ApiResponse::apiResponse([], 'add_token', 401);
 		}
