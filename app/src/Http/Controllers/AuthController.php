@@ -76,6 +76,21 @@ class AuthController extends BaseController
 		return ApiResponse::apiResponse([], 'server_error', 500);
 	}
 	
+	
+	/**
+	 * @return string
+	 */
+	public function profile() : string
+	{
+		$user = (new LinkController())->getUserByToken();
+		if ($user) {
+			unset($user['password'], $user['token'] );
+			return ApiResponse::apiResponse($user, 'logout_ok');
+		}
+		return ApiResponse::apiResponse([], 'server_error', 500);
+	}
+	
+	
 	/**
 	 * check user
 	 * @return bool

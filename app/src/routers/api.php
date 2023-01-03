@@ -54,7 +54,10 @@ return  match($url) {
 	
 	'/logout' =>  $controllerGenerator->middleware( new AuthMiddleware())
 									  ->runMethodOfControllers(new AuthController(), 'logout'),
-
+	
+	'/profile' =>  $controllerGenerator->middleware( new AuthMiddleware())
+									  ->runMethodOfControllers(new AuthController(), 'profile'),
+	
 	
 	default =>  $controllerGenerator->runMethodOfControllers(new HomeController(), 'home'),
 };

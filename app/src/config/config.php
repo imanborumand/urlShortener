@@ -55,6 +55,10 @@ $config = [
 		'logout' => [
 			'path' => 'logout',
 			'method' => 'GET',
+		],
+		'profile' => [
+			'path' => 'profile',
+			'method' => 'GET',
 		]
 	]
 ];
